@@ -1,7 +1,7 @@
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 
-import RootLayout from './layouts/RootLayout';
-import { ErrorPage, FourZeroFourPage, NoMatchPage } from './pages';
+import { RootLayout } from './layouts';
+import { ErrorPage, FourZeroFourPage, HomePage, NoMatchPage } from './pages';
 
 const router = createHashRouter([
   {
@@ -11,7 +11,10 @@ const router = createHashRouter([
     children: [
       {
         errorElement: <FourZeroFourPage />,
-        children: [{ path: '*', element: <NoMatchPage /> }],
+        children: [
+          { index: true, element: <HomePage /> },
+          { path: '*', element: <NoMatchPage /> },
+        ],
       },
     ],
   },

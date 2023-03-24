@@ -1,0 +1,46 @@
+.homePageContainer {
+  margin-top: 2em;
+  background-color: var(--primary-pale-orange);
+  background-image: url('../imgs/background-wave.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  padding: 8rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+}
+
+.heroContent h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dark-grayish-blue);
+}
+
+.heroContent h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.heroContent button {
+  cursor: pointer;
+  margin-top: 0.5em;
+  border: transparent;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 4px;
+  font-size: 2.8rem;
+  font-weight: 700;
+  padding: 0.2em 0.4em;
+  color: var(--white);
+  background-color: var(--primary-orange);
+}
+
+.heroImg img {
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  width: min(65rem, 100%);
+}
