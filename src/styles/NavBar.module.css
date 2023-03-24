@@ -1,0 +1,93 @@
+.navContainer {
+  padding: 1em 0;
+  position: relative;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 6fr 1fr;
+}
+
+.navContainer::after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  content: '';
+  border: 1px solid var(--light-grayish-blue);
+}
+
+.navLogo {
+  cursor: pointer;
+}
+
+.navLinks {
+  padding: 1.5em;
+  display: flex;
+  gap: 2em;
+}
+
+.navLink {
+  font-size: 1.6rem;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  text-decoration: none;
+  color: var(--dark-grayish-blue);
+}
+
+.navLink:hover {
+  color: var(--very-dark-blue);
+  border-bottom: 2px solid var(--primary-orange);
+}
+
+.navLink.active {
+  color: var(--primary-orange);
+  background-color: var(--primary-pale-orange);
+  font-weight: 700;
+}
+
+.navLink.pending {
+  color: var(--primary-orange);
+  font-weight: 700;
+}
+
+.navActions {
+  display: flex;
+  gap: 3em;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.actionCart {
+  cursor: pointer;
+  position: relative;
+}
+
+.actionCart span {
+  position: absolute;
+  padding: 0.1em 0.5em;
+  border-radius: 10px;
+  background-color: var(--primary-orange);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  top: -7px;
+  right: -14px;
+}
+
+.actionCart img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: 2.5rem;
+}
+
+.actionAvatar {
+  cursor: pointer;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: min(4rem, 100%);
+}
+
+.actionAvatar img:hover {
+  border-radius: 50%;
+  border: 1px solid var(--primary-orange);
+}
