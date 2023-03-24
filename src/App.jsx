@@ -1,12 +1,13 @@
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 import RootLayout from './layouts/RootLayout';
+import { ErrorPage } from './pages';
 
 const router = createHashRouter([
   {
     path: '/',
     element: <RootLayout />,
-    errorElement: <div>something wrong</div>,
+    errorElement: <ErrorPage />,
     // children: [
     //   {
     //     errorElement: <div>sth wrong</div>,
