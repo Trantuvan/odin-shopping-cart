@@ -2,6 +2,7 @@ import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 import { RootLayout } from './layouts';
 import { ErrorPage, FourZeroFourPage, HomePage, NoMatchPage, ProductPage } from './pages';
+import { loader as productLoader } from './pages/ProductPage';
 
 const router = createHashRouter([
   {
@@ -13,7 +14,7 @@ const router = createHashRouter([
         errorElement: <FourZeroFourPage />,
         children: [
           { index: true, element: <HomePage /> },
-          { path: 'products', element: <ProductPage /> },
+          { path: 'products', element: <ProductPage />, loader: productLoader },
           { path: '*', element: <NoMatchPage /> },
         ],
       },
