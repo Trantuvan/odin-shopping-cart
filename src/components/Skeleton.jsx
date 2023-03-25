@@ -19,7 +19,13 @@ const Skeleton = ({ type, count = 1 }) => {
   );
 
   if (type === 'product') {
-    return Array(count).fill(<ProductSkeleton />);
+    return Array(count)
+      .fill(null)
+      .map((_, idx) => (
+        <li key={idx}>
+          <ProductSkeleton />
+        </li>
+      ));
   }
 
   return null;
