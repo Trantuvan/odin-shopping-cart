@@ -1,0 +1,13 @@
+.priceFilterContainer {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.priceFilterContainer p {
+  font-size: 1.4rem;
+}
+
+.priceFilterContainer select {
+  background-color: var(--white);
+}
