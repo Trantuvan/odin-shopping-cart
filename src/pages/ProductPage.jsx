@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Await, defer, useLoaderData } from 'react-router-dom';
 
 import styles from '../styles/ProductPage.module.css';
-import { SearchTool, FilterPrice, ProductItem } from '../components';
+import { SearchTool, FilterPrice, ProductItem, Skeleton } from '../components';
 import { getAllProducts } from '../apis';
 
 const ProductsPage = () => {
@@ -16,7 +16,7 @@ const ProductsPage = () => {
         <FilterPrice />
       </div>
       <ul className={clsx(styles.productList)}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Skeleton type="product" count={20} />}>
           <Await resolve={products}>
             {(resolvedProducts) =>
               resolvedProducts.map((product) => (

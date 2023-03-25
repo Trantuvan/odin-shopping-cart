@@ -1,0 +1,54 @@
+.prodSk {
+  background-color: var(--white);
+  min-height: 100%;
+  padding: 0.4em;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+  animation: skeleton 1s ease infinite alternate;
+}
+
+@keyframes skeleton {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.prodSkImg {
+  border-radius: 3px;
+  background-color: var(--light-grayish-blue);
+  margin: 0 auto;
+  aspect-ratio: 1/1;
+  width: min(18.6rem, 100%);
+}
+
+.prodSkInfo {
+  padding: 0 0.5em;
+  display: flex;
+  gap: 0.8em;
+  flex-direction: column;
+}
+
+.prodSkReview {
+  display: flex;
+  gap: 0.5em;
+}
+
+.prodSkText {
+  border-radius: 3px;
+  background-color: var(--light-grayish-blue);
+  height: 1.4rem;
+}
+
+.prodSkText.sm {
+  width: 40%;
+}
+
+.prodSkText.xs {
+  width: 25%;
+}
