@@ -1,0 +1,13 @@
+.searchTool {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.searchTool > *:nth-child(1) {
+  flex: 1 1 70%;
+}
+
+.searchTool > *:nth-child(1) input[type='search'] {
+  width: 100%;
+}
