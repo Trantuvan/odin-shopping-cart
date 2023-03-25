@@ -1,9 +1,8 @@
 import clsx from 'clsx';
+import { Outlet } from 'react-router-dom';
 
 import styles from '../styles/RootLayout.module.css';
-import NavBar from '../components/NavBar';
-import { Outlet } from 'react-router-dom';
-import Footer from '../components/Footer';
+import { NavBar, Footer } from '../components';
 
 function RootLayout() {
   return (
