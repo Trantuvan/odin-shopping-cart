@@ -1,3 +1,4 @@
+import { matchSorter } from 'match-sorter';
 import { readFromCache, writeToCache } from '../utils';
 
 const getAllProducts = async () => {
@@ -19,4 +20,12 @@ const getAllProducts = async () => {
   return products;
 };
 
-export { getAllProducts };
+const getProductsByTitle = async (title) => {
+  let products = readFromCache('products');
+  if (title) {
+    products = matchSorter(products, title, { keys: ['title'] });
+  }
+  return products;
+};
+
+export { getAllProducts, getProductsByTitle };
