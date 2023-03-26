@@ -32,8 +32,17 @@ const ProductsPage = () => {
   );
 };
 
-const loader = async () => {
-  const products = getAllProducts();
+const loader = async ({ request }) => {
+  let products;
+  const url = new URL(request.url);
+  const titleQuery = url.searchParams.get('title');
+
+  if (titleQuery) {
+    products = await getProductsByTitle(titleQuery);
+    return { products, title: titleQuery };
+  }
+  products = getAllProducts();
+
   return defer({ products });
 };
 
