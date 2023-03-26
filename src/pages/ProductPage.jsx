@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Await, defer, useLoaderData } from 'react-router-dom';
 
 import styles from '../styles/ProductPage.module.css';
-import { SearchTool, FilterPrice, ProductItem, Skeleton } from '../components';
+import { SearchTool, ProductItem, Skeleton } from '../components';
 import { getAllProducts, getProductsByTitle } from '../apis';
 
 const ProductsPage = () => {
@@ -13,7 +13,6 @@ const ProductsPage = () => {
     <div className={clsx(styles.productsContainer)}>
       <div className={clsx(styles.toolbar)}>
         <SearchTool name="title" defaultValue={title} />
-        <FilterPrice />
       </div>
       <ul className={clsx(styles.productList)}>
         <Suspense fallback={<Skeleton type="product" count={20} />}>
