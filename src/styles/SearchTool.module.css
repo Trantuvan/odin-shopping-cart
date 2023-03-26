@@ -1,7 +1,18 @@
 .searchTool {
   display: flex;
   gap: 0.5em;
-  align-items: center;
+  align-items: first baseline;
+  position: relative;
+}
+
+.formControl {
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+}
+
+.formControl > button {
+  padding: 0.8rem 1.3rem;
 }
 
 .searchTool > *:nth-child(1) {
@@ -10,4 +21,38 @@
 
 .searchTool > *:nth-child(1) input[type='search'] {
   width: 100%;
+  position: relative;
+}
+
+.searchResult {
+  position: absolute;
+  top: 3.8rem;
+  right: 4.3rem;
+  left: 0;
+  max-height: 200px;
+  padding: 1.5em;
+  background-color: var(--white);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.searchResult::-webkit-scrollbar {
+  display: none;
+}
+
+.searchItem {
+  border-radius: 3px;
+  padding: 0.8rem;
+  line-height: 1.8rem;
+  display: flex;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: var(--very-dark-blue);
+}
+
+.searchItem:hover {
+  background-color: var(--primary-pale-orange);
 }

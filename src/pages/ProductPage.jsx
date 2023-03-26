@@ -12,8 +12,14 @@ const ProductsPage = () => {
   return (
     <div className={clsx(styles.productsContainer)}>
       <div className={clsx(styles.toolbar)}>
-        <SearchTool />
-        <FilterPrice />
+        <Await resolve={products}>
+          {(resolvedProducts) => (
+            <>
+              <SearchTool data={resolvedProducts} />
+              <FilterPrice />
+            </>
+          )}
+        </Await>
       </div>
       <ul className={clsx(styles.productList)}>
         <Suspense fallback={<Skeleton type="product" count={20} />}>

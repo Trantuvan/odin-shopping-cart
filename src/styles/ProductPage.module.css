@@ -9,6 +9,7 @@
 }
 
 .toolbar {
+  z-index: 999;
   padding: 1.2em;
   grid-area: toolbar;
   background-color: var(--white-smoke);
