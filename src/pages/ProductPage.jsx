@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import clsx from 'clsx';
-import { Await, defer, useLoaderData } from 'react-router-dom';
+import { Await, defer, Link, useLoaderData } from 'react-router-dom';
 
 import styles from '../styles/ProductPage.module.css';
 import { SearchTool, ProductItem, Skeleton } from '../components';
@@ -20,7 +20,9 @@ const ProductsPage = () => {
             {(resolvedProducts) =>
               resolvedProducts.map((product) => (
                 <li key={product.id}>
-                  <ProductItem product={product} />
+                  <Link to={`${product.id}`} className={clsx(styles.productItem)}>
+                    <ProductItem product={product} />
+                  </Link>
                 </li>
               ))
             }
