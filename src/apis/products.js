@@ -1,4 +1,3 @@
-import { matchSorter } from 'match-sorter';
 import { readFromCache, writeToCache } from '../utils';
 
 const getAllProducts = async () => {
@@ -23,7 +22,7 @@ const getAllProducts = async () => {
 const getProductsByTitle = async (title) => {
   let products = readFromCache('products');
   if (title) {
-    products = matchSorter(products, title, { keys: ['title'] });
+    return products.filter((product) => product.title.toLowerCase().includes(title.toLowerCase()));
   }
   return products;
 };

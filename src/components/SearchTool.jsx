@@ -1,17 +1,18 @@
-import { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import styles from '../styles/SearchTool.module.css';
+import { readFromCache } from '../utils';
 
-const SearchTool = ({ placeholder = 'Search...', data }) => {
+const SearchTool = ({ placeholder = 'Search...' }) => {
   const [filterData, setFilterData] = useState([]);
 
   const handleFiler = (evt) => {
     const searchWord = evt.target.value.toLowerCase();
-    const newFiler = data.filter((val) => val.title.toLowerCase().includes(searchWord));
+    const newFiler = readFromCache('products').filter((val) => val.title.toLowerCase().includes(searchWord));
 
     if (searchWord.length === 0) {
       setFilterData([]);
@@ -47,6 +48,5 @@ const SearchTool = ({ placeholder = 'Search...', data }) => {
 
 SearchTool.propTypes = {
   placeholder: PropTypes.string,
-  data: PropTypes.array.isRequired,
 };
 export default SearchTool;

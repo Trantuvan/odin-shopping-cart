@@ -1,5 +1,5 @@
-import { Suspense } from 'react';
 import clsx from 'clsx';
+import { Suspense } from 'react';
 import { Await, defer, useLoaderData } from 'react-router-dom';
 
 import styles from '../styles/ProductPage.module.css';
@@ -12,14 +12,8 @@ const ProductsPage = () => {
   return (
     <div className={clsx(styles.productsContainer)}>
       <div className={clsx(styles.toolbar)}>
-        <Await resolve={products}>
-          {(resolvedProducts) => (
-            <>
-              <SearchTool data={resolvedProducts} />
-              <FilterPrice />
-            </>
-          )}
-        </Await>
+        <SearchTool />
+        <FilterPrice />
       </div>
       <ul className={clsx(styles.productList)}>
         <Suspense fallback={<Skeleton type="product" count={20} />}>
