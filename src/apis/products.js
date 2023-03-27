@@ -28,4 +28,17 @@ const getProductsByTitle = async (title) => {
   return products;
 };
 
-export { getAllProducts, getProductsByTitle };
+const sortProductsByPrice = async (sortPrice) => {
+  let products = readFromCache('products');
+
+  if (sortPrice === 'asc') {
+    return products.sort((a, b) => a.price - b.price);
+  }
+  if (sortPrice === 'desc') {
+    return products.sort((a, b) => b.price - a.price);
+  }
+
+  return products;
+};
+
+export { getAllProducts, getProductsByTitle, sortProductsByPrice };
