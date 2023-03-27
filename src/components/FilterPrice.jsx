@@ -1,11 +1,16 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { Form, useSubmit } from 'react-router-dom';
 
 import styles from '../styles/FilterPrice.module.css';
 
 function FilterPrice({ defaultValue = '' }) {
   const submit = useSubmit();
+
+  useEffect(() => {
+    document.querySelector('#price').value = defaultValue;
+  }, [defaultValue]);
 
   return (
     <div className={clsx(styles.priceFilterContainer)}>
