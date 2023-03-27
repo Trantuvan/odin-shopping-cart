@@ -4,7 +4,7 @@ import { Await, defer, useLoaderData } from 'react-router-dom';
 
 import styles from '../styles/ProductPage.module.css';
 import { SearchTool, FilterPrice, ProductItem, Skeleton } from '../components';
-import { getAllProducts, getProductsByTitle } from '../apis';
+import { getAllProducts, getProductsByTitle, sortProductsByPrice } from '../apis';
 
 const ProductsPage = () => {
   const { products, title } = useLoaderData();
@@ -36,10 +36,17 @@ const loader = async ({ request }) => {
   let products;
   const url = new URL(request.url);
   const titleQuery = url.searchParams.get('title');
+  const sortPriceQuery = url.searchParams.get('sort-price');
 
   if (titleQuery) {
     products = await getProductsByTitle(titleQuery);
     return { products, title: titleQuery };
+  }
+
+  if (sortPriceQuery) {
+    products = await sortProductsByPrice(sortPriceQuery);
+
+    return { products, 'sort-price': titleQuery };
   }
   products = getAllProducts();
 
