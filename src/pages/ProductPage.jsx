@@ -8,13 +8,13 @@ import { SearchTool, FilterPrice, ProductItem, Skeleton } from '../components';
 import { getAllProducts, getProductsByTitle, sortProductsByPrice } from '../apis';
 
 const ProductsPage = () => {
-  const { products, title } = useLoaderData();
+  const { products, title, sortPrice } = useLoaderData();
 
   return (
     <div className={clsx(styles.productsContainer)}>
       <div className={clsx(styles.toolbar)}>
         <SearchTool name="title" defaultValue={title} />
-        <FilterPrice />
+        <FilterPrice defaultValue={sortPrice} />
       </div>
       <ul className={clsx(styles.productList)}>
         <Suspense fallback={<Skeleton type="product" count={20} />}>
@@ -49,7 +49,7 @@ const loader = async ({ request }) => {
   if (sortPriceQuery) {
     products = await sortProductsByPrice(sortPriceQuery);
 
-    return { products, 'sort-price': titleQuery };
+    return { products, sortPrice: sortPriceQuery };
   }
   products = getAllProducts();
 
