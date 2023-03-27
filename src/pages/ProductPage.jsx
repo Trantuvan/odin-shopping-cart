@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
 import clsx from 'clsx';
-import { Await, defer, Link, useLoaderData } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Await, defer, useLoaderData, Link } from 'react-router-dom';
 
 import styles from '../styles/ProductPage.module.css';
 
