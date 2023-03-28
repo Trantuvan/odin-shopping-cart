@@ -74,8 +74,8 @@ function ProductDetail() {
     </div>
   );
 }
-const loader = async ({ request, params: { productId } }) => {
-  const product = await getProductById(productId, request);
+const loader = async ({ params: { productId } }) => {
+  const product = await getProductById(productId);
   return { product };
 };
 

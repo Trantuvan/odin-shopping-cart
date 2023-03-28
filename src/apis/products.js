@@ -27,14 +27,16 @@ const getProductsByTitle = async (title) => {
   return products;
 };
 
-const getProductById = async (id, request) => {
-  const response = await fetch(`https://fakestoreapi.com/products/${id}`, { signal: request.signal });
+const getProductById = async (id) => {
+  // const response = await fetch(`https://fakestoreapi.com/products/${id}`);
 
-  if (response.ok === false) {
-    throw new Response(`${response.statusText}`, { status: response.status });
-  }
-  const product = await response.json();
-  return product;
+  // if (response.ok === false) {
+  //   throw new Response(`${response.statusText}`, { status: response.status });
+  // }
+  // const product = await response.json();
+  const products = readFromCache('products');
+  let contact = products.find((product) => product.id === id);
+  return contact || null;
 };
 
 const sortProductsByPrice = async (sortPrice) => {
