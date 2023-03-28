@@ -1,14 +1,24 @@
 import clsx from 'clsx';
 import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 import plusIcon from '../imgs/icon-plus.svg';
 import minusIcon from '../imgs/icon-minus.svg';
-import heroImg from '../imgs/image-product-2.jpg';
 import styles from '../styles/ProductDetail.module.css';
+import { getProductById } from '../apis';
 
 function ProductDetail() {
+  const {
+    product: {
+      title,
+      description,
+      category,
+      image,
+      price,
+      rating: { count: maxQuantity },
+    },
+  } = useLoaderData();
   const [count, setCount] = useState(0);
-  const maxQuantity = 10;
 
   const increment = () =>
     setCount((c) => {
@@ -28,15 +38,15 @@ function ProductDetail() {
   return (
     <div className={clsx(styles.productDetailContainer)}>
       <div className={clsx(styles.heroImg)}>
-        <img src={heroImg} alt="product-img" />
+        <img src={image} alt="product-img" />
       </div>
       <div className={clsx(styles.contents)}>
-        <h1 className={clsx(styles.title)}>Fall Limited Edition Sneakers</h1>
-        <p className={clsx(styles.description)}>
-          These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they
-          will withstand everything the weather can offer.
-        </p>
-        <div className={clsx(styles.price)}>$125.00</div>
+        <div className={clsx(styles.contentsHeading)}>
+          <h2 className={clsx(styles.category)}>{category}</h2>
+          <h1 className={clsx(styles.title)}>{title}</h1>
+        </div>
+        <p className={clsx(styles.description)}>{description}</p>
+        <div className={clsx(styles.price)}>${price}</div>
         <div className={clsx(styles.actions)}>
           <div className={clsx(styles.counter)}>
             <button type="button" className={clsx(styles.actionLeft)} onClick={decrement}>
@@ -64,5 +74,10 @@ function ProductDetail() {
     </div>
   );
 }
+const loader = async ({ request, params: { productId } }) => {
+  const product = await getProductById(productId, request);
+  return { product };
+};
 
+export { loader };
 export default ProductDetail;
