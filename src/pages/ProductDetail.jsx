@@ -18,17 +18,17 @@ function ProductDetail() {
       rating: { count: maxQuantity },
     },
   } = useLoaderData();
-  const [count, setCount] = useState(0);
+  const [quanity, setQuanity] = useState(1);
 
   const increment = () =>
-    setCount((c) => {
+    setQuanity((c) => {
       if (c === maxQuantity) {
         return maxQuantity;
       }
       return c + 1;
     });
   const decrement = () =>
-    setCount((c) => {
+    setQuanity((c) => {
       if (c === 0) {
         return 0;
       }
@@ -52,7 +52,7 @@ function ProductDetail() {
             <button type="button" className={clsx(styles.actionLeft)} onClick={decrement}>
               <img src={minusIcon} alt="decrement" />
             </button>
-            <div className={clsx(styles.quanity)}>{count}</div>
+            <div className={clsx(styles.quanity)}>{quanity}</div>
             <button type="button" className={clsx(styles.actionRight)} onClick={increment}>
               <img src={plusIcon} alt="increment" />
             </button>
