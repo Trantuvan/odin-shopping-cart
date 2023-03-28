@@ -27,6 +27,16 @@ const getProductsByTitle = async (title) => {
   return products;
 };
 
+const getProductById = async (id, request) => {
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`, { signal: request.signal });
+
+  if (response.ok === false) {
+    throw new Response(`${response.statusText}`, { status: response.status });
+  }
+  const product = await response.json();
+  return product;
+};
+
 const sortProductsByPrice = async (sortPrice) => {
   let products = readFromCache('products');
 
@@ -40,4 +50,4 @@ const sortProductsByPrice = async (sortPrice) => {
   return products;
 };
 
-export { getAllProducts, getProductsByTitle, sortProductsByPrice };
+export { getAllProducts, getProductsByTitle, sortProductsByPrice, getProductById };
