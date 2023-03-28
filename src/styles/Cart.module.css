@@ -21,3 +21,43 @@
   object-fit: contain;
   width: 2.5rem;
 }
+
+.cartDropdown {
+  z-index: 999;
+  aspect-ratio: 5/4;
+  border-radius: 6px;
+  width: min(36.6rem, 100%);
+  position: absolute;
+  top: 5.8rem;
+  right: 0;
+  padding: 1.5em;
+  background-color: var(--white);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+  display: grid;
+  grid-template-rows: 3rem 1fr;
+  grid-template-areas: 'header' 'cart-list';
+}
+
+.cartDropdown::after {
+  left: 0;
+  right: 0;
+  top: 4rem;
+  position: absolute;
+  content: '';
+  border: 1px solid var(--light-grayish-blue);
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartList p {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--dark-grayish-blue);
+}
