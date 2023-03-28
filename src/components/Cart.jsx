@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { useState } from 'react';
 
 import cartIcon from '../imgs/icon-cart.svg';
 import styles from '../styles/Cart.module.css';
@@ -16,20 +15,16 @@ const carts = [
 ];
 
 function Cart() {
-  const [toggle, setToggle] = useState(true);
-
   return (
-    <div className="cartContainer">
+    <div className={clsx(styles.cartContainer)}>
       <div className={clsx(styles.cart)}>
         <img src={cartIcon} alt="cart-icon" />
         {carts.length !== 0 && <span>{carts.length}</span>}
       </div>
-      {toggle && (
-        <div className={clsx(styles.cartDropdown)}>
-          <h2>Cart</h2>
-          <div className={clsx(styles.cartList)}>{carts.length === 0 ? <p>Your cart is empty.</p> : 'list'}</div>
-        </div>
-      )}
+      <div className={clsx(styles.cartDropdown)}>
+        <h2>Cart</h2>
+        <div className={clsx(styles.cartList)}>{carts.length === 0 ? <p>Your cart is empty.</p> : 'list'}</div>
+      </div>
     </div>
   );
 }
