@@ -22,9 +22,24 @@
   gap: 2.5em;
 }
 
+.contentsHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.category {
+  color: var(--primary-orange);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+}
+
 .title {
   text-align: start;
-  font-size: 5rem;
+  font-size: 4rem;
+  width: min(19.5ch, 100%);
 }
 
 .description {
