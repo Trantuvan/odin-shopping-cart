@@ -27,8 +27,7 @@ const SearchTool = ({ placeholder = 'Search...', name, defaultValue = '' }) => {
     setFilterData(newFiler);
   };
 
-  // TODO: support auto-suggestion search
-  //* manually support auto-suggestion data search out of sync with react-router-dom
+  // TODO: fix UX open/close dropdown
   return (
     // *default form method GET request auto attach ?title after path of route
     <Form className={clsx(styles.searchTool)} method="get">
