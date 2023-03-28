@@ -34,9 +34,10 @@ const getProductById = async (id) => {
   //   throw new Response(`${response.statusText}`, { status: response.status });
   // }
   // const product = await response.json();
+  // return product;
   const products = readFromCache('products');
-  let contact = products.find((product) => product.id === id);
-  return contact || null;
+  // * typeof dynamic segment is string
+  return products.find((product) => product.id === parseInt(id)) || null;
 };
 
 const sortProductsByPrice = async (sortPrice) => {
