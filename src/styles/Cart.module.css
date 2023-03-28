@@ -1,0 +1,23 @@
+.cart {
+  cursor: pointer;
+  position: relative;
+}
+
+.cart span {
+  position: absolute;
+  padding: 0.1em 0.5em;
+  border-radius: 10px;
+  background-color: var(--primary-orange);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  top: -7px;
+  right: -14px;
+}
+
+.cart img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: 2.5rem;
+}

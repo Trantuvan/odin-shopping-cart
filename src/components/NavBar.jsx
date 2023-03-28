@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 
 import styles from '../styles/NavBar.module.css';
 import logo from '../imgs/logo.svg';
-import cartIcon from '../imgs/icon-cart.svg';
 import usrAvt from '../imgs/image-avatar.png';
+import Cart from './Cart';
 
 const navLinks = [
   { id: 1, name: 'Home', to: '/' },
@@ -35,10 +35,11 @@ function NavBar() {
         ))}
       </ul>
       <div className={clsx(styles.navActions)}>
-        <div className={clsx(styles.actionCart)}>
+        {/* <div className={clsx(styles.actionCart)}>
           <img src={cartIcon} alt="cart-icon" />
           <span>10</span>
-        </div>
+        </div> */}
+        <Cart />
         <div className={clsx(styles.actionAvatar)}>
           <img src={usrAvt} alt="user-avt" />
         </div>

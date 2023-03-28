@@ -56,30 +56,6 @@
   align-items: center;
 }
 
-.actionCart {
-  cursor: pointer;
-  position: relative;
-}
-
-.actionCart span {
-  position: absolute;
-  padding: 0.1em 0.5em;
-  border-radius: 10px;
-  background-color: var(--primary-orange);
-  color: var(--white);
-  font-weight: 700;
-  font-size: 1.2rem;
-  line-height: 1.2rem;
-  top: -7px;
-  right: -14px;
-}
-
-.actionCart img {
-  aspect-ratio: 1/1;
-  object-fit: contain;
-  width: 2.5rem;
-}
-
 .actionAvatar {
   cursor: pointer;
   aspect-ratio: 1/1;
