@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 
 import plusIcon from '../imgs/icon-plus.svg';
 import minusIcon from '../imgs/icon-minus.svg';
 import styles from '../styles/ProductDetail.module.css';
 import { getProductById } from '../apis';
+import useCart, { ADD } from '../hooks/useCart';
 
 function ProductDetail() {
   const {
@@ -18,22 +19,37 @@ function ProductDetail() {
       rating: { count: maxQuantity },
     },
   } = useLoaderData();
-  const [quanity, setQuanity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
+  const { productId } = useParams();
+  const [, setCart] = useCart();
 
   const increment = () =>
-    setQuanity((c) => {
+    setQuantity((c) => {
       if (c === maxQuantity) {
         return maxQuantity;
       }
       return c + 1;
     });
   const decrement = () =>
-    setQuanity((c) => {
+    setQuantity((c) => {
       if (c === 1) {
         return 1;
       }
       return c - 1;
     });
+
+  const handleAddToCart = () => {
+    setCart({
+      type: ADD,
+      item: {
+        productId: parseInt(productId),
+        quantity: quantity,
+        image: image,
+        title: title,
+        price: price,
+      },
+    });
+  };
 
   return (
     <div className={clsx(styles.productDetailContainer)}>
@@ -52,12 +68,12 @@ function ProductDetail() {
             <button type="button" className={clsx(styles.actionLeft)} onClick={decrement}>
               <img src={minusIcon} alt="decrement" />
             </button>
-            <div className={clsx(styles.quanity)}>{quanity}</div>
+            <div className={clsx(styles.quanity)}>{quantity}</div>
             <button type="button" className={clsx(styles.actionRight)} onClick={increment}>
               <img src={plusIcon} alt="increment" />
             </button>
           </div>
-          <button className={clsx(styles.addToCart)}>
+          <button className={clsx(styles.addToCart)} onClick={handleAddToCart}>
             <div className={clsx(styles.cartImg)}>
               <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
                 <path
