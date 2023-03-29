@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { useParams } from 'react-router-dom';
 import useCart, { REMOVE } from '../hooks/useCart';
 
 import cartIcon from '../imgs/icon-cart.svg';
@@ -8,8 +7,7 @@ import styles from '../styles/Cart.module.css';
 
 function Cart() {
   const [cart, setCart] = useCart();
-  const { productId } = useParams();
-  const handleDelete = () => setCart({ type: REMOVE, productId: parseInt(productId) });
+  const handleDelete = (productId) => setCart({ type: REMOVE, productId: productId });
 
   return (
     <div className={clsx(styles.cartContainer)}>
@@ -36,7 +34,7 @@ function Cart() {
                         {`$${c.price} x ${c.quantity}`} <span>{`$${(c.price * c.quantity).toFixed(2)}`}</span>
                       </div>
                     </div>
-                    <button type="button" onClick={handleDelete}>
+                    <button type="button" onClick={() => handleDelete(c.productId)}>
                       <img src={deleteIcon} alt="delete-item" />
                     </button>
                   </li>
