@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import { createContext, useContext, useMemo, useReducer } from 'react';
 
 const ADD = 'add';
@@ -6,9 +7,9 @@ const REMOVE = 'remove';
 const CartContext = createContext(undefined);
 
 function cartsReducer(cart, action) {
-  const seletedItem = cart.find((item) => item.productId === action.item.productId);
   switch (action.type) {
     case ADD:
+      const seletedItem = cart.find((item) => item.productId === action.item.productId);
       if (seletedItem === undefined) {
         return [...cart, action.item];
       }
