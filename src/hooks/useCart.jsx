@@ -21,7 +21,6 @@ function cartsReducer(cart, action) {
         }
       });
     case REMOVE:
-      console.log(cart);
       return cart.filter((item) => item.productId !== action.productId);
 
     default:
