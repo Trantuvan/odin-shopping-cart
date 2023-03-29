@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 
 import plusIcon from '../imgs/icon-plus.svg';
 import minusIcon from '../imgs/icon-minus.svg';
@@ -11,6 +11,7 @@ import useCart, { ADD } from '../hooks/useCart';
 function ProductDetail() {
   const {
     product: {
+      id: productId,
       title,
       description,
       category,
@@ -20,7 +21,6 @@ function ProductDetail() {
     },
   } = useLoaderData();
   const [quantity, setQuantity] = useState(1);
-  const { productId } = useParams();
   const [, setCart] = useCart();
 
   const increment = () =>
@@ -42,7 +42,7 @@ function ProductDetail() {
     setCart({
       type: ADD,
       item: {
-        productId: parseInt(productId),
+        productId: productId,
         quantity: quantity,
         image: image,
         title: title,
